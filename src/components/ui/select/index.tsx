@@ -24,14 +24,14 @@ import {
   ActionsheetSectionList,
   ActionsheetSectionHeaderText,
 } from './select-actionsheet';
-import { Pressable, View, TextInput } from 'react-native';
+import {
+  Pressable, View, TextInput,
+} from 'react-native';
 
 const SelectTriggerWrapper = React.forwardRef<
   React.ElementRef<typeof Pressable>,
   React.ComponentProps<typeof Pressable>
->(({ ...props }, ref) => {
-  return <Pressable {...props} ref={ref} />;
-});
+>(({ ...props }, ref) => <Pressable {...props} ref={ref} />);
 
 const selectIconStyle = tva({
   base: 'text-background-500 fill-none',
@@ -52,7 +52,7 @@ const selectStyle = tva({
 });
 
 const selectTriggerStyle = tva({
-  base: 'border border-background-300 rounded flex-row items-center overflow-hidden data-[hover=true]:border-outline-400 data-[focus=true]:border-primary-700 data-[disabled=true]:opacity-40 data-[disabled=true]:data-[hover=true]:border-background-300',
+  base: 'border border-background-200 rounded-md flex-row items-center overflow-hidden data-[hover=true]:border-outline-400 data-[focus=true]:border-primary-700 data-[disabled=true]:opacity-40 data-[disabled=true]:data-[hover=true]:border-background-300',
   variants: {
     size: {
       xl: 'h-12',
@@ -72,7 +72,7 @@ const selectTriggerStyle = tva({
 });
 
 const selectInputStyle = tva({
-  base: 'py-auto px-3 placeholder:text-typography-500 web:w-full h-full text-typography-900 pointer-events-none web:outline-none ios:leading-[0px]',
+  base: 'px-3 placeholder:text-typography-500 web:w-full h-full text-typography-900 pointer-events-none web:outline-none ios:leading-[0px]',
   parentVariants: {
     size: {
       xl: 'text-xl',
@@ -108,7 +108,7 @@ const UISelect = createSelect(
     FlatList: ActionsheetFlatList,
     SectionList: ActionsheetSectionList,
     SectionHeaderText: ActionsheetSectionHeaderText,
-  }
+  },
 );
 
 cssInterop(UISelect, { className: 'style' });
@@ -136,17 +136,15 @@ type ISelectProps = VariantProps<typeof selectStyle> &
 const Select = React.forwardRef<
   React.ElementRef<typeof UISelect>,
   ISelectProps
->(({ className, ...props }, ref) => {
-  return (
-    <UISelect
-      className={selectStyle({
-        class: className,
-      })}
-      ref={ref}
-      {...props}
-    />
-  );
-});
+>(({ className, ...props }, ref) => (
+  <UISelect
+    className={selectStyle({
+      class: className,
+    })}
+    ref={ref}
+    {...props}
+  />
+));
 
 type ISelectTriggerProps = VariantProps<typeof selectTriggerStyle> &
   React.ComponentProps<typeof UISelect.Trigger> & { className?: string };
@@ -154,20 +152,18 @@ type ISelectTriggerProps = VariantProps<typeof selectTriggerStyle> &
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof UISelect.Trigger>,
   ISelectTriggerProps
->(({ className, size = 'md', variant = 'outline', ...props }, ref) => {
-  return (
-    <UISelect.Trigger
-      className={selectTriggerStyle({
-        class: className,
-        size,
-        variant,
-      })}
-      ref={ref}
-      context={{ size, variant }}
-      {...props}
-    />
-  );
-});
+>(({ className, size = 'md', variant = 'outline', ...props }, ref) => (
+  <UISelect.Trigger
+    className={selectTriggerStyle({
+      class: className,
+      size,
+      variant,
+    })}
+    ref={ref}
+    context={{ size, variant }}
+    {...props}
+  />
+));
 
 type ISelectInputProps = VariantProps<typeof selectInputStyle> &
   React.ComponentProps<typeof UISelect.Input> & { className?: string };

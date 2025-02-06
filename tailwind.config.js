@@ -173,8 +173,8 @@ module.exports = {
       },
       fontFamily: {
         heading: undefined,
-        body: undefined,
-        mono: undefined,
+        body: ['Montserrat', 'sans-serif'],
+        mono: ['IBM Plex Mono', 'monospace'],
         roboto: ['Roboto', 'sans-serif'],
       },
       fontWeight: {

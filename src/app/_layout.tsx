@@ -9,7 +9,6 @@ const RootLayout = () =>(
     <Stack
       screenOptions={{
         headerShown: false,
-
       }}
     />
     <StatusBar style="auto" />

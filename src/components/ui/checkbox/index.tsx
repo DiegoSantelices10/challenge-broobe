@@ -1,10 +1,14 @@
 'use client';
 import React from 'react';
 import { createCheckbox } from '@gluestack-ui/checkbox';
-import { View, Pressable, Text, Platform } from 'react-native';
+import {
+  View, Pressable, Text, Platform,
+} from 'react-native';
 import type { TextProps, ViewProps } from 'react-native';
 import { tva } from '@gluestack-ui/nativewind-utils/tva';
-import { PrimitiveIcon, IPrimitiveIcon, UIIcon } from '@gluestack-ui/icon';
+import {
+  PrimitiveIcon, IPrimitiveIcon, UIIcon,
+} from '@gluestack-ui/icon';
 import {
   withStyleContext,
   useStyleContext,
@@ -15,22 +19,16 @@ import type { VariantProps } from '@gluestack-ui/nativewind-utils';
 const IndicatorWrapper = React.forwardRef<
   React.ElementRef<typeof View>,
   ViewProps
->(({ ...props }, ref) => {
-  return <View {...props} ref={ref} />;
-});
+>(({ ...props }, ref) => <View {...props} ref={ref} />);
 
 const LabelWrapper = React.forwardRef<React.ElementRef<typeof Text>, TextProps>(
-  ({ ...props }, ref) => {
-    return <Text {...props} ref={ref} />;
-  }
+  ({ ...props }, ref) => <Text {...props} ref={ref} />,
 );
 
 const IconWrapper = React.forwardRef<
   React.ElementRef<typeof PrimitiveIcon>,
   IPrimitiveIcon
->(({ ...props }, ref) => {
-  return <UIIcon {...props} ref={ref} />;
-});
+>(({ ...props }, ref) => <UIIcon {...props} ref={ref} />);
 
 const SCOPE = 'CHECKBOX';
 const UICheckbox = createCheckbox({
@@ -70,7 +68,7 @@ const checkboxStyle = tva({
 });
 
 const checkboxIndicatorStyle = tva({
-  base: 'justify-center items-center border-outline-400 bg-transparent rounded web:data-[focus-visible=true]:outline-none web:data-[focus-visible=true]:ring-2 web:data-[focus-visible=true]:ring-indicator-primary data-[checked=true]:bg-primary-600 data-[checked=true]:border-primary-600 data-[hover=true]:data-[checked=false]:border-outline-500 data-[hover=true]:bg-transparent data-[hover=true]:data-[invalid=true]:border-error-700 data-[hover=true]:data-[checked=true]:bg-primary-700 data-[hover=true]:data-[checked=true]:border-primary-700 data-[hover=true]:data-[checked=true]:data-[disabled=true]:border-primary-600 data-[hover=true]:data-[checked=true]:data-[disabled=true]:bg-primary-600 data-[hover=true]:data-[checked=true]:data-[disabled=true]:opacity-40 data-[hover=true]:data-[checked=true]:data-[disabled=true]:data-[invalid=true]:border-error-700 data-[hover=true]:data-[disabled=true]:border-outline-400 data-[hover=true]:data-[disabled=true]:data-[invalid=true]:border-error-700 data-[active=true]:data-[checked=true]:bg-primary-800 data-[active=true]:data-[checked=true]:border-primary-800 data-[invalid=true]:border-error-700 data-[disabled=true]:opacity-40',
+  base: 'justify-center items-center border-outline-400 bg-transparent rounded web:data-[focus-visible=true]:outline-none web:data-[focus-visible=true]:ring-2 web:data-[focus-visible=true]:ring-indicator-primary data-[checked=true]:bg-[#547fdb] data-[checked=true]:border-[#547fdb] data-[hover=true]:data-[checked=false]:border-outline-500 data-[hover=true]:bg-transparent data-[hover=true]:data-[invalid=true]:border-error-700 data-[hover=true]:data-[checked=true]:bg-primary-700 data-[hover=true]:data-[checked=true]:border-primary-700 data-[hover=true]:data-[checked=true]:data-[disabled=true]:border-primary-600 data-[hover=true]:data-[checked=true]:data-[disabled=true]:bg-primary-600 data-[hover=true]:data-[checked=true]:data-[disabled=true]:opacity-40 data-[hover=true]:data-[checked=true]:data-[disabled=true]:data-[invalid=true]:border-error-700 data-[hover=true]:data-[disabled=true]:border-outline-400 data-[hover=true]:data-[disabled=true]:data-[invalid=true]:border-error-700 data-[active=true]:data-[checked=true]:bg-primary-800 data-[active=true]:data-[checked=true]:border-primary-800 data-[invalid=true]:border-error-700 data-[disabled=true]:opacity-40',
   parentVariants: {
     size: {
       lg: 'w-6 h-6 border-[3px]',
@@ -111,21 +109,19 @@ type ICheckboxProps = React.ComponentPropsWithoutRef<typeof UICheckbox> &
 const Checkbox = React.forwardRef<
   React.ElementRef<typeof UICheckbox>,
   ICheckboxProps
->(({ className, size = 'md', ...props }, ref) => {
-  return (
-    <UICheckbox
-      className={checkboxStyle({
-        class: className,
-        size,
-      })}
-      {...props}
-      context={{
-        size,
-      }}
-      ref={ref}
-    />
-  );
-});
+>(({ className, size = 'md', ...props }, ref) => (
+  <UICheckbox
+    className={checkboxStyle({
+      class: className,
+      size,
+    })}
+    {...props}
+    context={{
+      size,
+    }}
+    ref={ref}
+  />
+));
 
 type ICheckboxIndicatorProps = React.ComponentPropsWithoutRef<
   typeof UICheckbox.Indicator
